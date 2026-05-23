@@ -1,6 +1,5 @@
 import "../styles/HubPage.css"
 import { useState, useEffect } from "react"
-import HubSideBar from "../components/HubSideBar"
 import RoomProfile from "../components/RoomProfile"
 import { useNavigate } from "react-router-dom"
 
@@ -12,7 +11,6 @@ function HubPage (){
     const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
 
-    // change this to api fetch for logged user rooms
     useEffect(() => {
     const fetchRooms = async () => {
         const rooms = await get_memberships()
@@ -31,7 +29,6 @@ function HubPage (){
 
     return(
         <div className="page">
-            <HubSideBar/>
             <div className="main-view">
                 <div className="head-bar">
                     <button className="header-button" onClick={handleCRRoute}>+</button>
@@ -55,6 +52,7 @@ function HubPage (){
                                     roomId={room.roomId}
                                     roomName={room.roomName}
                                     bio={room.bio}
+                                    channelId={room.channel_id}
                                 />
                             ))
                         )}

@@ -1,8 +1,8 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from .serializers import MessageSerializer, RoomSerializer, RoomMembershipSerializer
-from .models import Room, Message, RoomMembership
+from .serializers import MessageSerializer, RoomSerializer, RoomMembershipSerializer, ChannelSerializer
+from .models import Room, Message, RoomMembership, Channel
 from rest_framework.permissions import IsAuthenticated
 from User.views import CookieJWTAuthentication
 from django_q.tasks import async_task
@@ -24,8 +24,6 @@ class MessageViewSet(viewsets.ViewSet):
             task_id = async_task(process_pending_messages, message.messageId)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
     
     @action(detail=False, methods=['get'], url_path='convo/(?P<user_id>[^/.]+)')
     def get_messages(self, request, user_id=None, other_user_id=None):
@@ -39,6 +37,31 @@ class MessageViewSet(viewsets.ViewSet):
         serializer = MessageSerializer(messages, many=True)
         return Response({'message': list(messages)})
     
+class ChannelViewSet(viewsets.ViewSet):
+    queryset = Channel.objects.all()
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [CookieJWTAuthentication]
+
+    # POST /channels/
+    def create(self, request):
+        serializer = ChannelSerializer(data=request.data, context={'request'})
+        if serializer.is_valid():
+            channel = serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    # GET /channels/{channel_id} /messages/
+    @action(detail=True, methods=['get'], url_path='messages')
+    def get_channel_messages(self, request, pk=None):
+        try:
+            channel=Channel.objects.get(channel_id=pk)
+        except Channel.DoesNotExist:
+            return Response({'error': 'Channel not does not exist'}, status=status.HTTP_404_NOT_FOUND)
+        
+        messages = Message.objects.filter(channel=channel).order_by('timestamp')
+        serializer = MessageSerializer(messages, many=True)
+        return Response({'messages': serializer.data})
+
     
 class RoomViewSet(viewsets.ViewSet):
     queryset = Room.objects.all()
@@ -72,20 +95,20 @@ class RoomViewSet(viewsets.ViewSet):
         serializer = RoomSerializer(room)
         return Response(serializer.data)
     
-    # GET /rooms/{roomId}/messages/
-    @action(detail=True, methods=['get'], url_path='messages')
-    def get_room_messages(self, request, pk=None):
+    # GET /rooms/{roomId}/channels/
+    @action(detail=True, methods=['get'], url_path='channels')
+    def get_channels(self, request, pk=None):
         try:
-            room=Room.objects.get(roomId=pk)
+            room = Room.objects.get(roomId=pk)
         except Room.DoesNotExist:
-            return Response({'error': 'Room not does not exist'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({'error': 'Room does not exist'}, status=status.HTTP_404_NOT_FOUND)
         
         if not room.members.filter(id=request.user.id).exists():
-            return Response({'error': 'You are not a memeber of this room'}, status=status.HTTP_403_FORBIDDEN)
+            return Response({'error': 'You are not a member of this room'}, status=status.HTTP_403_FORBIDDEN)
         
-        messages = Message.objects.filter(room=pk).order_by('timestamp')
-        serializer = MessageSerializer(messages, many=True)
-        return Response({'messages': serializer.data})
+        channels = Channel.objects.filter(parent_room=room)
+        serializer = ChannelSerializer(channels, many=True)
+        return Response({'channels': serializer.data})
 
     # POST /rooms/{roomId}/join/  
     @action(detail=True, methods=['post'], url_path='join')

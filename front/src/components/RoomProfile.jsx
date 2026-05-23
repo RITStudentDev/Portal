@@ -2,12 +2,13 @@ import '../styles/RoomProfile.css'
 import icon from '../assets/defaultRoom.png'
 import { Link } from 'react-router-dom';
 
-function RoomProfile({roomId, roomName, bio}) {
+function RoomProfile({roomId, roomName, bio, channelId}) {
+
 
   return (
     <div className="room-profile-container">
         <div id='name-container'>
-            <Link to={`/chat/${roomId}`}>
+            <Link to={`/chat/${roomId}/${channelId}`}>
                 <h1 className='room-name'>{roomName}</h1>
             </Link>
         </div>

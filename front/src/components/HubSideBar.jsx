@@ -1,6 +1,21 @@
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import { get_current_room } from '../mod/chatroom'
+import { useState, useEffect } from 'react'
 import '../styles/HubSideBar.css'
-function HubSideBar (){
+
+function HubSideBar() {
+    const { roomId } = useParams()
+    const [channels, setChannels] = useState([])
+
+    useEffect(() => {
+        if (!roomId) return
+        const fetchRoom = async () => {
+            const data = await get_current_room(roomId)
+            if (data?.channels) setChannels(data.channels)
+        }
+        fetchRoom()
+    }, [roomId])
+
     return (
         <div className="sidebar">
             <ul>
@@ -10,8 +25,18 @@ function HubSideBar (){
                     </Link>
                 </span>
                 <hr/>
+                <ul>
+                    {channels.map(channel => (
+                        <li key={channel.channel_id}>
+                            <Link to={`/chat/${roomId}/${channel.channel_id}`}>
+                                # {channel.name}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
             </ul>
         </div>
     )
 }
+
 export default HubSideBar

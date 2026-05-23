@@ -18,13 +18,21 @@ function RoomCreationPage (){
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify({roomName, bio})
         })
-        const data = await response.json()
-        if (response.ok){navigate(`/chat/${data.roomId}`)}
+        const roomData = await response.json()
+
+        const channelRes = await fetch(`${BASE_URL}rooms/${roomData.roomId}/channels/`, {
+            credentials: 'include'
+        })
+        const channelData = await channelRes.json()
+
+        if (response.ok){
+            const defaultChannel = channelData.channels[0]
+            navigate(`/chat/${roomData.roomId}/${defaultChannel.channel_id}/`)
+        }
     }
 
     return(
         <div className="rcp">
-            <HubSideBar/>
             <div className="creation-container">
                 <input 
                     className="room-name-input"

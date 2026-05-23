@@ -18,7 +18,7 @@ function App() { return (
       <Route path="/hub" element={<HubPage/>}/>
       <Route path="/me" element={<Me/>}/>
       <Route path="/createroom" element={<RoomCreationPage/>}/>
-      <Route path="/chat/:roomId" element={<RoomChatPage/>}/>
+      <Route path="/chat/:roomId/:channelId" element={<RoomChatPage/>}/>
     </Routes>
   </Router>
 ) } 

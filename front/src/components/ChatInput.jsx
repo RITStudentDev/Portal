@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import '../styles/chatinput.css'
 
 function ChatInput({ws, roomId}) {
     const BASE_URL = import.meta.env.VITE_API_URL;
@@ -40,7 +41,7 @@ function ChatInput({ws, roomId}) {
     }
 
     return (
-        <div>
+        <div className='chat-input'>
             <input
                 type="text"
                 value={content}
@@ -48,7 +49,7 @@ function ChatInput({ws, roomId}) {
                 onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
                 placeholder="Type a message..."
             />
-            <button onClick={sendMessage}>Send</button>
+            <button onClick={sendMessage}>↑</button>
         </div>
     )
 }

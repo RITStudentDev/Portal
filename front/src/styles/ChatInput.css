@@ -1,0 +1,21 @@
+.chat-input {
+    border: solid 2px #3d3d45;
+    background-color: #1c1d22;
+        border-radius: 12px;
+}
+
+.chat-input button {
+    border: none;
+    border-radius: 1fr;
+    color: #bac6ce;
+    background: none;
+}
+
+.chat-input input {
+    border: none;
+    background: none ;
+}
+
+.chat-input input::placeholder {
+    color: #bac6ce;
+}
