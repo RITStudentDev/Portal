@@ -44,7 +44,7 @@ class ChannelViewSet(viewsets.ViewSet):
 
     # POST /channels/
     def create(self, request):
-        serializer = ChannelSerializer(data=request.data, context={'request'})
+        serializer = ChannelSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
             channel = serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -74,6 +74,7 @@ class RoomViewSet(viewsets.ViewSet):
         if serializer.is_valid():
             room = serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+        print("ERRORS: ", serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     # GET /rooms/

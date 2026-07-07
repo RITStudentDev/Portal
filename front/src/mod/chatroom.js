@@ -53,6 +53,25 @@ export async function get_current_room (roomId) {
     }
 }
 
+export async function update_current_room() {
+    const cachedRoom = localStorage.getItem('current_room')
+    if (cachedRoom) {
+        const parsedRoom = JSON.parse(cachedRoom)
+        try {
+            const res = await fetch(`${BASE_URL}rooms/${parsedRoom.roomId}`, {
+                method: "GET",
+                credentials: 'include'
+            })
+            if (!res.ok) throw new Error('Failed to fetch room')
+            const room = await res.json()
+            localStorage.setItem('current_room', JSON.stringify(room))
+            return room
+        } catch (err) {
+            throw err
+        }
+    }
+    console.log('No current_room cached')
+}
 // Clears current_room cache
 export function clear_room_cache(){
     localStorage.removeItem('current_room')

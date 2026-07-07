@@ -22,7 +22,7 @@ class ChannelSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Channel
-        fields = ['channel_id', 'name', 'is_default']
+        fields = ['channel_id', 'parent_room', 'name', 'is_default']
 
 class RoomSerializer(serializers.ModelSerializer):
     members = RoomMembershipSerializer(source='memberships', many=True, read_only=True)

@@ -52,7 +52,6 @@ function HubPage (){
                                     roomId={room.roomId}
                                     roomName={room.roomName}
                                     bio={room.bio}
-                                    channelId={room.channel_id}
                                 />
                             ))
                         )}
