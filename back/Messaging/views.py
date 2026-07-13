@@ -37,6 +37,12 @@ class MessageViewSet(viewsets.ViewSet):
         serializer = MessageSerializer(messages, many=True)
         return Response({'message': list(messages)})
     
+    @action(detail=False, methods=['get'], url_path='channel/(?P<channel_id>[^/.]+)')
+    def get_channel_messages(self, request, channel_id=None):
+        messages = Message.objects.filter(channel=channel_id).order_by('timestamp')
+        serializer = MessageSerializer(messages, many=True)
+        return Response({'messages': serializer.data})
+    
 class ChannelViewSet(viewsets.ViewSet):
     queryset = Channel.objects.all()
     permission_classes = [IsAuthenticated]
@@ -44,7 +50,7 @@ class ChannelViewSet(viewsets.ViewSet):
 
     # POST /channels/
     def create(self, request):
-        serializer = ChannelSerializer(data=request.data, context={'request'})
+        serializer = ChannelSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
             channel = serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -74,6 +80,7 @@ class RoomViewSet(viewsets.ViewSet):
         if serializer.is_valid():
             room = serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+        print("ERRORS: ", serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     # GET /rooms/

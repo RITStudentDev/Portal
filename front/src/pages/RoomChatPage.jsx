@@ -13,6 +13,7 @@ function ServerChatPage() {
   const BASE_URL = import.meta.env.VITE_API_URL;
 
   const { roomId, channelId } = useParams()
+  const ws = useRef(null)
 
   const [messages, setMessages] = useState([]);
   const [roomName, setRoomName] = useState("");
@@ -22,12 +23,39 @@ function ServerChatPage() {
   useEffect(() => {
     if (!roomId) return
     const fetchRoom = async () => {
-      const room = await get_current_room(roomId)
-      console.log(room)
-      if (room) setRoomName(room.roomName)
+        const room = await get_current_room(roomId)
+        if (room) {
+            setRoomName(room.roomName)
+            const channel = room.channels.find(c => c.channel_id === channelId)
+            if (channel) setChannelName(channel.name)
+        }
     }
     fetchRoom()
-  }, [roomId])
+}, [roomId, channelId])
+
+  useEffect(() => {
+    if (!channelId) return
+    setMessages([])
+
+    const fetchMessages = async () => {
+        const res = await fetch(`${BASE_URL}messages/channel/${channelId}/`, {
+            credentials: 'include'
+        })
+        const data = await res.json()
+        setMessages(data.messages)
+    }
+    fetchMessages()
+
+    ws.current = new WebSocket(`${WS_URL}ws/chat/${channelId}/`)
+    ws.current.onopen = () => console.log("WebSocket connected")
+    ws.current.onmessage = (e) => {
+        const data = JSON.parse(e.data)
+        setMessages(prev => [...prev, data])
+    }
+    ws.current.onclose = () => console.log("WebSocket disconnected")
+
+    return () => ws.current.close()
+}, [channelId])
 
   return (
     <div className="chat-page">
@@ -52,7 +80,7 @@ function ServerChatPage() {
             ))}
           </ul>
         </div>
-        {/*<ChatInput/>*/}
+        <ChatInput ws={ws} roomId={roomId} channelId={channelId}/>
       </div>
     </div>
   );
