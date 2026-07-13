@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import '../styles/chatinput.css'
 
-function ChatInput({ws, roomId}) {
+function ChatInput({ws, roomId, channelId}) {
     const BASE_URL = import.meta.env.VITE_API_URL;
 
     const [content, setContent] = useState('')
@@ -33,6 +33,7 @@ function ChatInput({ws, roomId}) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 room: roomId,
+                channel: channelId,
                 content: content
             })
         })

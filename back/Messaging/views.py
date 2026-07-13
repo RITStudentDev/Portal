@@ -37,6 +37,12 @@ class MessageViewSet(viewsets.ViewSet):
         serializer = MessageSerializer(messages, many=True)
         return Response({'message': list(messages)})
     
+    @action(detail=False, methods=['get'], url_path='channel/(?P<channel_id>[^/.]+)')
+    def get_channel_messages(self, request, channel_id=None):
+        messages = Message.objects.filter(channel=channel_id).order_by('timestamp')
+        serializer = MessageSerializer(messages, many=True)
+        return Response({'messages': serializer.data})
+    
 class ChannelViewSet(viewsets.ViewSet):
     queryset = Channel.objects.all()
     permission_classes = [IsAuthenticated]
