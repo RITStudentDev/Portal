@@ -135,6 +135,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
+.venv
 .env
 .envrc
 .venv
@@ -217,3 +218,31 @@ __marimo__/
 .supabase/
 supabase/.branches
 supabase/.temp
+
+#vscode
+.vscode/*.code-workspace
+.vscode/settings.json
+.vscode/launch.json
+.vscode/extensions.json
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Vite
+dist/
+.vite/
+
+# Django
+staticfiles/
+static_root/
+media/
+
+# Docker
+*.pid
+*.sock
+docker-data/
+postgres-data/
