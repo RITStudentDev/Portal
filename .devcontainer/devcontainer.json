@@ -1,11 +1,11 @@
 {
     "name": "Portal Development",
 
-    "image": "mcr.microsoft.com/devcontainers/universal:6-linux",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
 
     "features": {
         "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
-            "moby": true,
+            "moby": false,
             "installDockerBuildx": true,
             "dockerDashComposeVersion": "latest"
         },
