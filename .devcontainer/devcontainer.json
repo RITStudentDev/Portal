@@ -1,0 +1,40 @@
+{
+    "name": "Portal Development",
+
+    "image": "mcr.microsoft.com/devcontainers/universal:6-linux",
+
+    "features": {
+        "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+            "moby": true,
+            "installDockerBuildx": true,
+            "dockerDashComposeVersion": "latest"
+        },
+        "ghcr.io/devcontainers/features/github-cli:1": {
+            "installDirectlyFromGitHubRelease": true,
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers/features/node:2": {
+            "nodeGypDependencies": true,
+            "version": "lts",
+            "pnpmVersion": "latest",
+            "nvmVersion": "latest"
+        },
+        "ghcr.io/devcontainers/features/python:1": {
+            "installTools": true,
+            "version": "3.13"
+        }
+    },
+
+    "runArgs": [
+        "--network=portal_default"
+    ],
+
+    "forwardPorts": [
+        6379,
+        5173,
+        8000,
+        5432
+    ],
+
+    "postCreateCommand": "pip3 install -r requirements.txt && cd front && npm install"
+}
