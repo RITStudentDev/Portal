@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import ColorBends from "../assets/home_bg";
 import "../styles/Home.css";
 
@@ -24,18 +23,16 @@ function Home() {
                     color="#2b2b4d"
                 />
             </div>
-
-            <div className="content">
-                <h1 id="title">PORTAL</h1>
-
-                <Link to="/login">
-                    <h3>Login</h3>
-                </Link>
-
-                <Link to="/signup">
-                    <h3>Create Account</h3>
-                </Link>
+            <div id="nav-container">
+                <nav className="headbar">
+                    <h2>Portal</h2>
+                    <a href="/login">Log In</a>
+                </nav>
             </div>
+                <div className="content">
+                    <h1 id="title">PORTAL</h1>
+                    <a href="/signup">Create Account</a>
+                </div>
         </div>
     );
 }
