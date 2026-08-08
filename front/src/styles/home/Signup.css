@@ -38,10 +38,6 @@
     mask-composite: subtract;
 }
 
-.submit-button {
-    width: fit-content;
-}
-
 .login{
     font-size: 12px;
 }
@@ -61,8 +57,15 @@
 }
 
 .signup-box form {
-    
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.signup-box button{
+    background-color: #0c081177;
+}
+
+.signup-box button:hover{
+    background-color: #42405777;
 }

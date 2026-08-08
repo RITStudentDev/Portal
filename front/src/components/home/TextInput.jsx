@@ -1,4 +1,4 @@
-import '../../styles/chat/TextInput.css'
+import '../../styles/home/TextInput.css'
 import { useState } from 'react'
 
 function TextInput({ placeholder, type, name, value, onChange }){
