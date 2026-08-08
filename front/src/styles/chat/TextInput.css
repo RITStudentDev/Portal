@@ -4,11 +4,11 @@
     align-items: center;
 }
 
-input {
+.input-container input {
     padding: 10px 10px 10px 20px; 
-    border: solid 2px #3d3d45;
-    background-color: #1c1d22;
-    height: 3rem;
+    border: transparent;
+    background-color: #0c081177;
+    height: 48px;
     width: 18rem;
     border-radius: 12px;
 }
