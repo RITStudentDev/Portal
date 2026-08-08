@@ -1,8 +1,8 @@
-import '../styles/RoomProfile.css'
-import icon from '../assets/defaultRoom.png'
+import '../../styles/hub/RoomProfile.css'
+import icon from '../../assets/defaultRoom.png'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
-import { get_current_room } from "../mod/chatroom";
+import { get_current_room } from "../../mod/chatroom";
 
 function RoomProfile({ roomId, roomName, bio }) {
     const navigate = useNavigate()

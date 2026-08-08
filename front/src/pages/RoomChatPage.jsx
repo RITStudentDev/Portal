@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
-import { AddUserWindow } from "../components/AddUser";
+import { AddUserWindow } from "../components/chat/AddUser";
 import { get_current_room } from "../mod/chatroom";
 
-import "../styles/RoomChatPage.css";
-import ChatInput from "../components/ChatInput";
-import HubSideBar from "../components/HubSideBar";
-import Message from "../components/Message";
+import "../styles/chat/RoomChatPage.css";
+import ChatInput from "../components/chat/ChatInput";
+import HubSideBar from "../components/hub/HubSideBar";
+import Message from "../components/chat/Message";
 
 function ServerChatPage() {
   const WS_URL = import.meta.env.VITE_WS_URL;

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import '../styles/chatinput.css'
+import '../../styles/chat/chatinput.css'
 
 function ChatInput({ws, roomId, channelId}) {
     const BASE_URL = import.meta.env.VITE_API_URL;

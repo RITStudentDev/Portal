@@ -1,6 +1,6 @@
 import React from "react"
 import { useState } from "react"
-import { get_current_room, update_current_room} from "../mod/chatroom";
+import { update_current_room} from "../../mod/chatroom";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 

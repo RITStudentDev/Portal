@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import HubSideBar from '../components/HubSideBar.jsx'
-import '../styles/RoomCreationPage.css'
+import HubSideBar from '../components/hub/HubSideBar.jsx'
+import '../styles/hub/RoomCreationPage.css'
 
 function RoomCreationPage (){
     const BASE_URL = import.meta.env.VITE_API_URL;

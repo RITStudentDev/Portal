@@ -1,8 +1,8 @@
 import { useNavigate, useParams, Link } from 'react-router-dom'
-import { get_current_room, clear_room_cache } from '../mod/chatroom'
+import { get_current_room, clear_room_cache } from '../../mod/chatroom'
 import { useState, useEffect } from 'react'
-import '../styles/HubSideBar.css'
-import CreateChannel from './CreateChannel'
+import '../../styles/hub/HubSideBar.css'
+import CreateChannel from '../chat/CreateChannel'
 
 function HubSideBar() {
     const { roomId } = useParams()

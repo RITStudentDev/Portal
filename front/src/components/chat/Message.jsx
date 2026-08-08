@@ -1,5 +1,5 @@
-import '../styles/Message.css'
-import pfp from '../assets/defaultpfp.png'
+import '../../styles/chat/Message.css'
+import pfp from '../../assets/defaultpfp.png'
 
 function Message({username, content, timestamp}){ 
 

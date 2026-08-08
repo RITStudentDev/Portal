@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import '../styles/home_bg.css';
+import '../styles/home/home_bg.css';
 
 const MAX_COLORS = 8;
 

@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import '../styles/Signup.css'
+import '../../styles/home/Signup.css'
 import TextInput from './TextInput.jsx'
-import { login } from '../mod/user.js'
+import { login } from '../../mod/user.js'
 import { Link } from 'react-router-dom'
-import { get_logged_user } from '../mod/user.js'
+import { get_logged_user } from '../../mod/user.js'
 
 function Login (){
     

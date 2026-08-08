@@ -1,6 +1,6 @@
-import "../styles/HubPage.css"
+import "../styles/hub/HubPage.css"
 import { useState, useEffect } from "react"
-import RoomProfile from "../components/RoomProfile"
+import RoomProfile from "../components/hub/RoomProfile"
 import { useNavigate } from "react-router-dom"
 
 import { get_memberships } from "../mod/user"

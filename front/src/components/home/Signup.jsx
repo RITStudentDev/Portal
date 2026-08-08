@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import '../styles/Signup.css'
+import '../../styles/home/Signup.css'
 import TextInput from './TextInput.jsx'
 import { Link } from 'react-router-dom';
 

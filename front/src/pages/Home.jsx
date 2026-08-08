@@ -1,5 +1,5 @@
 import ColorBends from "../assets/home_bg";
-import "../styles/Home.css";
+import "../styles/home/Home.css";
 
 function Home() {
     return (

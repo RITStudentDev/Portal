@@ -1,6 +1,6 @@
 import { get_logged_user } from "../mod/user"
 import { useEffect, useState } from "react";
-import '../styles/MePage.css'
+import '../styles/user/MePage.css'
 
 function Me (){
 

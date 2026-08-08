@@ -1,5 +1,5 @@
-import { add_to_room } from '../mod/chatroom'
-import '../styles/AddUser.css'
+import { add_to_room } from '../../mod/chatroom'
+import '../../styles/chat/AddUser.css'
 import { useState } from 'react'
 
 export function AddUserWindow ({visible, onClose}){
