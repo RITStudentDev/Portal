@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import '../../styles/home/Signup.css'
 import TextInput from './TextInput.jsx'
-import { Link } from 'react-router-dom';
 
 function Signup (){
     const BASE_URL = import.meta.env.VITE_API_URL;
@@ -80,9 +79,7 @@ function Signup (){
                     value={formData.password2}
                     onChange={handleChange}
                 />
-                <Link to={'/login'}>
-                    <p>Already have an account.</p>
-                </Link>
+                <a href='/login'>Already have an account?</a>
                 <button type='submit'>Create Account</button>
                 {error && <p>{error}</p>}
                 {error && <p>{message}</p>}

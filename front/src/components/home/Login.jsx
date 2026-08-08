@@ -35,7 +35,6 @@ function Login (){
         <div className="signup-box">
             <form onSubmit={handleSubmit}>
                 <h2>Login</h2>
-                <br></br>
                 <TextInput 
                     placeholder="Username" 
                     type="username" 

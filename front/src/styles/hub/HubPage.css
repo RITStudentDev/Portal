@@ -5,10 +5,6 @@
   box-sizing: border-box;
 }
 
-body {
-    background: #101013;
-}
-
 .header-button {
     display: flex;
     width: 40px;
