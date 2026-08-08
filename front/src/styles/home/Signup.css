@@ -54,9 +54,10 @@
 }
 
 .signup-box a {
+    color: #fefeffaa;
     font-weight: 400;
     font-size: 14px;
-    margin: 16px 0px;
+    margin: 24px 0px;
 }
 
 .signup-box form {
