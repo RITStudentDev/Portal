@@ -6,30 +6,25 @@ export function getCookie(name) {
 }
 
 export async function login (username, password){
-    try {
-        const response = await fetch( `${BASE_URL}users/login/`, {
-            method: "POST",
-            headers: {
-                "Content-Type" : "application/json",
-            },
-            credentials: "include",
-            body: JSON.stringify({
-                username: username,
-                password: password
-            }),
-        });
+    const response = await fetch( `${BASE_URL}users/login/`, {
+        method: "POST",
+        headers: {
+            "Content-Type" : "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+            username: username,
+            password: password
+        }),
+    });
 
-        const data = await response.json()
+    const data = await response.json()
 
-        if (!response.ok){
-            throw new Error(data.detail || "Login failed");
-        }
-
-        return data;
-
-    } catch (error){
-        throw error
+    if (!response.ok){
+        throw new Error(data.detail || "Login failed");
     }
+
+    return data;
 }
 
 export async function get_logged_user(){
@@ -39,7 +34,7 @@ export async function get_logged_user(){
     const access_token = getCookie("access_token")
 
     try {
-        const response = await fetch( `${BASE_URL}users/me`, {
+        const response = await fetch( `${BASE_URL}users/me/`, {
             credentials: "include",
             headers: {
                 Authorization : `Bearer ${access_token}`
@@ -65,15 +60,10 @@ export function clear_user_cache() {
 }
 
 export async function get_memberships(){
-
-    try{
-        const response = await fetch(`${BASE_URL}rooms/`, {
-            method: 'GET',
-            credentials: 'include'
-        });
-        const data = await response.json()
-        return data.rooms;
-    } catch (err){
-        throw err;
-    }
+    const response = await fetch(`${BASE_URL}rooms/`, {
+        method: 'GET',
+        credentials: 'include'
+    });
+    const data = await response.json()
+    return data.rooms;
 }
