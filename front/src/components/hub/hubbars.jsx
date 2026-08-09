@@ -62,7 +62,16 @@ export { HubSideBar }
 function ControlBar(){
     return(
         <div className="control-bar">
-            
+            <div className='button-container'>
+                <button>+</button>
+                <button>F</button>
+            </div>
+            <form>
+                <input
+                    placeholder='Search room'
+                ></input>
+            </form>
+            <button>A</button>
         </div>
     )
 }
