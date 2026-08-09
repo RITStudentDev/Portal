@@ -3,30 +3,37 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background-color: aliceblue;
-    padding: 0 16px 0 10px;
+    width: 98%;
+    margin: 0 auto
+}
 
+.control-bar form {
+    padding: 6px;
+    border-radius: 12px;
+    background-color: #181c1d;
 }
 
 .control-bar input {
     width: 48ch;
     border-radius: 8px;
     border: transparent;
-    margin: 8px auto;
-    padding: 6px
+    padding: 8px;
+    background-color: #0e0f10;
 }
 
 .button-container {
     display: flex;
-    width: 70px;
+    width: fit-content;
     gap: 10px;
+    padding: 6px;
+    border-radius: 12px;
+    background-color: #181c1d;
 }
 
 .control-bar button {
-    background-color: black;
+    background-color: #0e0f10;
     padding: 0;
     height: 28px;
     width: 28px;
     margin: 0;
-
 }

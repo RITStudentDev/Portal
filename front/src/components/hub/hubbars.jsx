@@ -71,7 +71,9 @@ function ControlBar(){
                     placeholder='Search room'
                 ></input>
             </form>
-            <button>A</button>
+            <div className='button-container'>
+                <button>A</button>
+            </div>
         </div>
     )
 }
