@@ -5,7 +5,7 @@ import { get_current_room } from "../mod/chatroom";
 
 import "../styles/chat/RoomChatPage.css";
 import ChatInput from "../components/chat/ChatInput";
-import HubSideBar from "../components/hub/HubSideBar";
+import { HubSideBar } from "../components/hub/hubbars";
 import Message from "../components/chat/Message";
 
 function ServerChatPage() {

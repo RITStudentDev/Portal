@@ -1,7 +1,8 @@
 import { useNavigate, useParams, Link } from 'react-router-dom'
 import { get_current_room, clear_room_cache } from '../../mod/chatroom'
 import { useState, useEffect } from 'react'
-import '../../styles/hub/HubSideBar.css'
+import '../../styles/hub/SideBar.css'
+import '../../styles/hub/ControlBar.css'
 import CreateChannel from '../chat/CreateChannel'
 
 function HubSideBar() {
@@ -56,5 +57,24 @@ function HubSideBar() {
         </div>
     )
 }
+export { HubSideBar }
 
-export default HubSideBar
+function ControlBar(){
+    return(
+        <div className="control-bar">
+            <div className='button-container'>
+                <button>+</button>
+                <button>F</button>
+            </div>
+            <form>
+                <input
+                    placeholder='Search room'
+                ></input>
+            </form>
+            <div className='button-container'>
+                <button>A</button>
+            </div>
+        </div>
+    )
+}
+export { ControlBar }

@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import HubSideBar from '../components/hub/HubSideBar.jsx'
+import { HubSideBar } from '../components/hub/hubbars.jsx'
 import '../styles/hub/RoomCreationPage.css'
 
 function RoomCreationPage (){
