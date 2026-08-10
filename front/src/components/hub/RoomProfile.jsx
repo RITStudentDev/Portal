@@ -1,7 +1,6 @@
 import '../../styles/hub/RoomProfile.css'
 import icon from '../../assets/defaultRoom.png'
 import { useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
 import { get_current_room } from "../../mod/chatroom";
 
 function RoomProfile({ roomId, roomName, bio }) {
@@ -28,8 +27,8 @@ function RoomProfile({ roomId, roomName, bio }) {
         <div className="room-profile-container">
             <div id='name-container'>
                 <h1 className='room-name' onClick={handleChatNav}>{roomName}</h1>
+                <img src={icon} alt='icon' />
             </div>
-            <img src={icon} alt='icon' />
             <div className='bio-container'>
                 <p>{bio}</p>
             </div>
