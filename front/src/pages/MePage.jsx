@@ -1,5 +1,6 @@
 import { get_logged_user } from "../mod/user"
 import { useEffect, useState } from "react";
+import pfp from '../assets/defaultpfp.png'
 import '../styles/user/MePage.css'
 
 function Me (){
@@ -19,8 +20,13 @@ function Me (){
 
     return (
         <div className="me-page">
-            <p>Username: {user.username}</p>
-            <p>Contact: {user.contact}</p>
+            <div style={{display: "flex"}}>
+                <img src={pfp} alt="Profile picture"></img>
+                <div>
+                    <h2>Username: {user.username}</h2>
+                    <p>Contact: {user.contact}</p>
+                </div>
+            </div>
         </div>
     )
 }
