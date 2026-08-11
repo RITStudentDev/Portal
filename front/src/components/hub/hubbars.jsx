@@ -5,7 +5,7 @@ import '../../styles/hub/SideBar.css'
 import '../../styles/hub/ControlBar.css'
 import CreateChannel from '../chat/CreateChannel'
 
-function HubSideBar() {
+function ChatSideBar() {
     const { roomId } = useParams()
     const [channels, setChannels] = useState([])
     const [room, setRoom] = useState({})
@@ -54,6 +54,16 @@ function HubSideBar() {
                 </ul>
             </ul>
             <CreateChannel roomId={roomId} onChannelCreated={refreshChannels}/>
+        </div>
+    )
+}
+export { ChatSideBar }
+
+function HubSideBar() {
+
+    return (
+        <div className="sidebar">
+            <button><a>⚙︎</a></button>
         </div>
     )
 }

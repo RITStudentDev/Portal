@@ -1,7 +1,7 @@
 import "../styles/hub/HubPage.css"
 import { useState, useEffect } from "react"
 import RoomProfile from "../components/hub/RoomProfile"
-import { ControlBar } from "../components/hub/hubbars"
+import { ControlBar, HubSideBar } from "../components/hub/hubbars"
 
 import { get_memberships } from "../mod/user"
 
@@ -21,6 +21,7 @@ function HubPage (){
 
     return(
         <div className="page">
+            <HubSideBar/>
             <div className="main-view">
                 <ControlBar/>
                 <div className="room-scroller">
