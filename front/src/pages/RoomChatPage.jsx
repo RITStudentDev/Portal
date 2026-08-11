@@ -8,6 +8,9 @@ import ChatInput from "../components/chat/ChatInput";
 import { HubSideBar, ChatSideBar } from "../components/hub/hubbars";
 import Message from "../components/chat/Message";
 
+
+// TODO: Call room data from page and pass data down to components through props
+//       rather than having separate calls. 
 function ServerChatPage() {
   const WS_URL = import.meta.env.VITE_WS_URL;
   const BASE_URL = import.meta.env.VITE_API_URL;
@@ -16,7 +19,7 @@ function ServerChatPage() {
   const ws = useRef(null)
 
   const [messages, setMessages] = useState([]);
-  const [roomName, setRoomName] = useState("");
+  const [room, setRoom] = useState({});
   const [channelName, setChannelName] = useState("");
   const [visible, setVisible] = useState(false);
 
@@ -25,7 +28,7 @@ function ServerChatPage() {
     const fetchRoom = async () => {
         const room = await get_current_room(roomId)
         if (room) {
-            setRoomName(room.roomName)
+            setRoom(room)
             const channel = room.channels.find(c => c.channel_id === channelId)
             if (channel) setChannelName(channel.name)
         }
