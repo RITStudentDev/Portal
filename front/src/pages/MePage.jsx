@@ -21,12 +21,12 @@ function Me (){
     return (
         <div className="me-page">
             <div className="profile-container">
-                <div style={{display: "flex", gap: "25px"}}>
+                <div style={{display: "flex", gap: "25px", background: "#0e0f10", padding: "12px", borderRadius: "12px"}}>
                     <div style={{height: "110.39px", aspectRatio: "1 / 1"}}>
                         <img id="pfp" src={pfp} alt="Profile picture"></img>
                     </div>
                     <div>
-                        <h2>Username: {user.username}</h2>
+                        <h2>{user.username}</h2>
                         <p>Contact: {user.contact}</p>
                     </div>
                 </div>
