@@ -1,5 +1,5 @@
-import { useNavigate, useParams, Link } from 'react-router-dom'
-import { get_current_room, clear_room_cache } from '../../mod/chatroom'
+import { useParams, Link } from 'react-router-dom'
+import { get_current_room} from '../../mod/chatroom'
 import { useState, useEffect } from 'react'
 import '../../styles/hub/SideBar.css'
 import '../../styles/hub/ControlBar.css'
@@ -9,7 +9,6 @@ function ChatSideBar() {
     const { roomId } = useParams()
     const [channels, setChannels] = useState([])
     const [room, setRoom] = useState({})
-    const navigate = useNavigate()
 
     useEffect(() => {
         if (!roomId) return
@@ -31,13 +30,9 @@ function ChatSideBar() {
     }
 }
 
-    const handleBack = () => {
-        clear_room_cache()
-        navigate("/hub")
-    }
-
     return (
         <div id="chat" className="sidebar">
+            <h3>{room.roomName}</h3>
             <ul>
                 <h4>Text Channels</h4>
                 <ul>
