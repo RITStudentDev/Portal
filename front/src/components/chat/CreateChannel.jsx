@@ -9,7 +9,7 @@ function  CreateChannel({ roomId, onChannelCreated}) {
     const [creating, setCreating] = useState(false)
     const [ channelName, setName] = useState("")
 
-    async function handleCreate(e) {
+    async function handleCreate() {
         await fetch(`${BASE_URL}channels/`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
