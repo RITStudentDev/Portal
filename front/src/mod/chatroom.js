@@ -35,40 +35,32 @@ export async function get_current_room (roomId) {
         if (room.roomId === roomId) return room
     }
 
-    try{
-        // Makes fetch call to get the room with associated id
-        const res = await fetch(`${BASE_URL}rooms/${roomId}`, {
-            method: "GET",
-            credentials: 'include'
-        })
-        // Checks if the response to the fetch call is valid
-        if (!res.ok) throw new Error('Failed to fetch room')
-        // Stores valid response JSON into variable to be saved
-        const room = await res.json()
-        // Saves room JSON object to local storage under "current_room" key
-        localStorage.setItem('current_room', JSON.stringify(room))
-        return room
-    } catch (err){
-        throw err
-    }
+    // Makes fetch call to get the room with associated id
+    const res = await fetch(`${BASE_URL}rooms/${roomId}`, {
+        method: "GET",
+        credentials: 'include'
+    })
+    // Checks if the response to the fetch call is valid
+    if (!res.ok) throw new Error('Failed to fetch room')
+    // Stores valid response JSON into variable to be saved
+    const room = await res.json()
+    // Saves room JSON object to local storage under "current_room" key
+    localStorage.setItem('current_room', JSON.stringify(room))
+    return room
 }
 
 export async function update_current_room() {
     const cachedRoom = localStorage.getItem('current_room')
     if (cachedRoom) {
         const parsedRoom = JSON.parse(cachedRoom)
-        try {
-            const res = await fetch(`${BASE_URL}rooms/${parsedRoom.roomId}`, {
-                method: "GET",
-                credentials: 'include'
-            })
-            if (!res.ok) throw new Error('Failed to fetch room')
-            const room = await res.json()
-            localStorage.setItem('current_room', JSON.stringify(room))
-            return room
-        } catch (err) {
-            throw err
-        }
+        const res = await fetch(`${BASE_URL}rooms/${parsedRoom.roomId}`, {
+            method: "GET",
+            credentials: 'include'
+        })
+        if (!res.ok) throw new Error('Failed to fetch room')
+        const room = await res.json()
+        localStorage.setItem('current_room', JSON.stringify(room))
+        return room
     }
     console.log('No current_room cached')
 }
