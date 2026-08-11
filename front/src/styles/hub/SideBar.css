@@ -1,14 +1,23 @@
 .sidebar {
     display: flex;
-    width: 3rem;
-    min-height: 100vh;
-    padding: 6px;
     flex-direction: column;
     background-color: #181c1d;
     align-items: flex-start;
+    min-height: 100vh;
+}
+#hub.sidebar {
+    width: 3.5rem;
+    min-height: 100vh;
+    padding: 6px;
+}
+#chat.sidebar {
+    border-left: 1px solid hsl(252, 9%, 22%);
+    width: 12rem;
+    padding: 12px;
 }
 
 .sidebar ul {
+    list-style-type: none;
     margin: 0;
     padding: 0;
 }
@@ -18,6 +27,18 @@
     padding: 0;
     width: 100%;
     border-radius: 13px;
+    margin-top: 12px;
+}
+#hub.sidebar button {
+    width: 100%;
     aspect-ratio: 1 /1;
-    margin: 0;
+}
+#chat.sidebar button {
+    width: 90%;
+    height: 1.5rem;
+}
+
+#chat.sidebar a {
+    font-size: 1rem;
+    font-weight: 400;
 }

@@ -5,7 +5,7 @@ import { get_current_room } from "../mod/chatroom";
 
 import "../styles/chat/RoomChatPage.css";
 import ChatInput from "../components/chat/ChatInput";
-import { HubSideBar } from "../components/hub/hubbars";
+import { HubSideBar, ChatSideBar } from "../components/hub/hubbars";
 import Message from "../components/chat/Message";
 
 function ServerChatPage() {
@@ -60,6 +60,7 @@ function ServerChatPage() {
   return (
     <div className="chat-page">
       <HubSideBar />
+      <ChatSideBar/>
       <div className="chat-view">
         <div className="chat-head">
           <h3 className="channel-title">{channelName}</h3>

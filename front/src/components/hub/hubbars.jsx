@@ -37,18 +37,15 @@ function ChatSideBar() {
     }
 
     return (
-        <div className="sidebar">
+        <div id="chat" className="sidebar">
             <ul>
-                <span onClick={handleBack}>
-                    <svg className="home-button" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M13.9897 20.9982H19.0001V12H21.0001L12.0001 3L3.04309 12H5.00006V20.9982H10.0001V15.5H13.9897V20.9982Z" stroke="#e2e0f2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/> </svg>
-                </span>
-                <hr/>
+                <h4>Text Channels</h4>
                 <ul>
                     {channels.map(channel => (
                         <li key={channel.channel_id}>
-                            <Link to={`/chat/${roomId}/${channel.channel_id}`}>
+                            <a href={`/chat/${roomId}/${channel.channel_id}`}>
                                 # {channel.name}
-                            </Link>
+                            </a>
                         </li>
                     ))}
                 </ul>
@@ -62,7 +59,7 @@ export { ChatSideBar }
 function HubSideBar() {
 
     return (
-        <div className="sidebar">
+        <div id="hub" className="sidebar">
             <button><a>⚙︎</a></button>
         </div>
     )
