@@ -16,7 +16,7 @@ function ChatInput({ws, roomId, channelId}) {
             setCurrentUser(data)
         }
         fetchUser()
-    }, [])
+    })
 
     const sendMessage = async () => {
         if (!content) return
