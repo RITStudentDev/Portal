@@ -53,8 +53,8 @@ function ControlBar(){
     return(
         <div className="control-bar">
             <div className='button-container'>
-                <a href="/createroom"><button>+</button></a>
-                <a><button>F</button></a>
+                <a href="/createroom"><button>Create server</button></a>
+                <a><button>Friends</button></a>
             </div>
             <form>
                 <input
@@ -62,7 +62,7 @@ function ControlBar(){
                 ></input>
             </form>
             <div className='button-container'>
-                <a href='/me'><button>A</button></a>
+                <a href='/me'><button>Profile</button></a>
             </div>
         </div>
     )

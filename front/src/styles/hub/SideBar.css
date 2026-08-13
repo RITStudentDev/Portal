@@ -4,6 +4,7 @@
     background-color: #181c1d;
     align-items: flex-start;
     min-height: 100vh;
+    border-right: 1px solid hsl(252, 9%, 22%);
 }
 #hub.sidebar {
     width: 3.5rem;
@@ -11,7 +12,6 @@
     padding: 6px;
 }
 #chat.sidebar {
-    border-left: 1px solid hsl(252, 9%, 22%);
     width: 12rem;
     padding: 12px;
 }
