@@ -1,4 +1,5 @@
 import "../styles/hub/HubPage.css"
+import { clear_room_cache } from "../mod/chatroom"
 import { useState, useEffect } from "react"
 import RoomProfile from "../components/hub/RoomProfile"
 import { ControlBar, HubSideBar } from "../components/hub/hubbars"
@@ -6,6 +7,8 @@ import { ControlBar, HubSideBar } from "../components/hub/hubbars"
 import { get_memberships } from "../mod/user"
 
 function HubPage (){
+
+    clear_room_cache();
 
     const [rooms, setRooms ] = useState([])
     const [loading, setLoading] = useState(true)

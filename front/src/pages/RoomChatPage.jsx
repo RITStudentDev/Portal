@@ -16,7 +16,7 @@ function ServerChatPage() {
   const ws = useRef(null)
 
   const [messages, setMessages] = useState([]);
-  const [roomName, setRoomName] = useState("");
+  const [room, setRoom] = useState({});
   const [channelName, setChannelName] = useState("");
   const [visible, setVisible] = useState(false);
 
@@ -25,7 +25,7 @@ function ServerChatPage() {
     const fetchRoom = async () => {
         const room = await get_current_room(roomId)
         if (room) {
-            setRoomName(room.roomName)
+            setRoom(room)
             const channel = room.channels.find(c => c.channel_id === channelId)
             if (channel) setChannelName(channel.name)
         }
@@ -35,7 +35,6 @@ function ServerChatPage() {
 
   useEffect(() => {
     if (!channelId) return
-    setMessages([])
 
     const fetchMessages = async () => {
         const res = await fetch(`${BASE_URL}messages/channel/${channelId}/`, {
@@ -55,12 +54,12 @@ function ServerChatPage() {
     ws.current.onclose = () => console.log("WebSocket disconnected")
 
     return () => ws.current.close()
-}, [channelId])
+}, [channelId, BASE_URL, WS_URL])
 
   return (
     <div className="chat-page">
-      <HubSideBar />
-      <ChatSideBar/>
+      <HubSideBar/>
+      <ChatSideBar room={room}/>
       <div className="chat-view">
         <div className="chat-head">
           <h3 className="channel-title">{channelName}</h3>

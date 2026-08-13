@@ -1,43 +1,26 @@
-import { useNavigate, useParams, Link } from 'react-router-dom'
-import { get_current_room, clear_room_cache } from '../../mod/chatroom'
-import { useState, useEffect } from 'react'
+import { useParams, Link } from 'react-router-dom'
+import { useState } from 'react'
 import '../../styles/hub/SideBar.css'
 import '../../styles/hub/ControlBar.css'
 import CreateChannel from '../chat/CreateChannel'
 
-function ChatSideBar() {
+function ChatSideBar({ room }) {
     const { roomId } = useParams()
-    const [channels, setChannels] = useState([])
-    const [room, setRoom] = useState({})
-    const navigate = useNavigate()
+    const [ refreshedChannels, setRefreshedChannels] = useState(null)
 
-    useEffect(() => {
-        if (!roomId) return
-        const fetchRoom = async () => {
-            const data = await get_current_room(roomId)
-            if (data) setRoom(data)
-            if (data?.channels) setChannels(data.channels)
-            
-        }
-        fetchRoom()
-    }, [roomId])
+    const channels = refreshedChannels ?? room.channels ?? []
 
     const refreshChannels = () => {
-    const cached = localStorage.getItem('current_room')
-    if (cached) {
-        const room = JSON.parse(cached)
-        setRoom(room)
-        setChannels(room.channels || [])
-    }
-}
-
-    const handleBack = () => {
-        clear_room_cache()
-        navigate("/hub")
+        const cached = localStorage.getItem('current_room')
+        if (cached) {
+            const cachedRoom = JSON.parse(cached)
+            setRefreshedChannels(cachedRoom.channels || [])
+        }
     }
 
     return (
         <div id="chat" className="sidebar">
+            <h3>{room.roomName}</h3>
             <ul>
                 <h4>Text Channels</h4>
                 <ul>
@@ -50,7 +33,7 @@ function ChatSideBar() {
                     ))}
                 </ul>
             </ul>
-            <CreateChannel roomId={roomId} onChannelCreated={refreshChannels}/>
+            <CreateChannel roomId={roomId} onChannelCreated={refreshChannels} />
         </div>
     )
 }
