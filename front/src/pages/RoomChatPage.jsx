@@ -62,8 +62,8 @@ function ServerChatPage() {
 
   return (
     <div className="chat-page">
-      <HubSideBar />
-      <ChatSideBar/>
+      <HubSideBar/>
+      <ChatSideBar room={room}/>
       <div className="chat-view">
         <div className="chat-head">
           <h3 className="channel-title">{channelName}</h3>
