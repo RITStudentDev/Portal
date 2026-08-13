@@ -2,6 +2,7 @@
     display: flex;
     flex: 1;
     min-height: 0;
+    background-color: #0e0f10;
 }
 
 .chat-head {
@@ -9,6 +10,29 @@
     grid-template-columns: 1fr auto 1fr;
     width: 100%;
     overflow: visible;
+}
+
+.chat-head h3 {
+    margin: 0;
+}
+
+.button-container {
+    display: flex;
+    width: fit-content;
+    gap: 10px;
+    padding: 6px;
+    border-radius: 12px;
+    background-color: #181c1d;
+}
+
+.chat-head button {
+    color: #cdd2db;
+    font-size: medium;
+    background-color: #0e0f10;
+    padding: 6px 6px 8px;
+    height: 28px;
+    width: fit-content;
+    margin: 0;
 }
 
 .room-title {

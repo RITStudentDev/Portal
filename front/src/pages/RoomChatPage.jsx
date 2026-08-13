@@ -64,7 +64,7 @@ function ServerChatPage() {
         <div className="chat-head">
           <h3 className="channel-title">{channelName}</h3>
           <div className="add-user-container">
-            <button onClick={() => setVisible(true)}>Add member</button>
+            <div className="button-container"><button onClick={() => setVisible(true)}>Add member</button></div>
             <AddUserWindow visible={visible} onClose={() => setVisible(false)} />
           </div>
         </div>

@@ -43,7 +43,7 @@ function HubSideBar() {
 
     return (
         <div id="hub" className="sidebar">
-            <button><a>⚙︎</a></button>
+            <button><a href='/hub'>🏠︎</a></button>
         </div>
     )
 }
@@ -54,7 +54,6 @@ function ControlBar(){
         <div className="control-bar">
             <div className='button-container'>
                 <a href="/createroom"><button>Create server</button></a>
-                <a><button>Friends</button></a>
             </div>
             <form>
                 <input

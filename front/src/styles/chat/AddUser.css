@@ -16,10 +16,10 @@
     top: 100%;
     right: 0;
     z-index: 100;
-    background-color: #1c1d22;
-    border: solid 2px #3d3d45;
+    background-color: #181c1d;
+    border: solid 1px hsl(252, 9%, 22%);
     padding: 8px;
-    border-radius: 20px;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -31,12 +31,17 @@
     box-sizing: border-box;
 }
 
+.add-user-window button {
+    width: fit-content;
+    margin: auto;
+}
+
 .close {
     align-self: flex-end;
     border-radius: 25px;
     width: 20px;
     height: 20px;
-    padding: 2px;
+    padding: 0px;
     border: none;
     cursor: pointer;
 }

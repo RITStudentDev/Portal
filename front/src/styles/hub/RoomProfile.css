@@ -15,10 +15,10 @@
     color: #e2e0f2;
 }
 
-img {
-    max-width: 50px;
-    padding-left: 32px;
-    margin-top: 16px;
+.room-profile-container img {
+    height: 40px;
+    margin: auto;
+    aspect-ratio: 1 / 1;
 }
 
 .room-name {
