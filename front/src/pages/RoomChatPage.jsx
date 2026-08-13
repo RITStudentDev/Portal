@@ -8,9 +8,6 @@ import ChatInput from "../components/chat/ChatInput";
 import { HubSideBar, ChatSideBar } from "../components/hub/hubbars";
 import Message from "../components/chat/Message";
 
-
-// TODO: Call room data from page and pass data down to components through props
-//       rather than having separate calls. 
 function ServerChatPage() {
   const WS_URL = import.meta.env.VITE_WS_URL;
   const BASE_URL = import.meta.env.VITE_API_URL;
@@ -38,7 +35,6 @@ function ServerChatPage() {
 
   useEffect(() => {
     if (!channelId) return
-    setMessages([])
 
     const fetchMessages = async () => {
         const res = await fetch(`${BASE_URL}messages/channel/${channelId}/`, {
@@ -58,7 +54,7 @@ function ServerChatPage() {
     ws.current.onclose = () => console.log("WebSocket disconnected")
 
     return () => ws.current.close()
-}, [channelId])
+}, [channelId, BASE_URL, WS_URL])
 
   return (
     <div className="chat-page">

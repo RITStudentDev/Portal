@@ -4,6 +4,7 @@ import '../../styles/hub/SideBar.css'
 import '../../styles/hub/ControlBar.css'
 import CreateChannel from '../chat/CreateChannel'
 
+// TODO: fix list of channels now showing on refresh
 function ChatSideBar({room}) {
     const { roomId } = useParams()
     const [channels, setChannels] = useState([])
