@@ -1,6 +1,6 @@
 /* ─── Tokens ─────────────────────────────────────────────────────────────── */
 :root {
-  --color-text:       #e2e0f2;
+  --color-text:       #cdd2db;
   --color-text-muted: #5d5a80;
   --color-link:       #646cff;
   --color-link-hover: #747bff;
@@ -72,7 +72,7 @@ button {
 }
 button:hover {
   background-color: var(--color-btn-hover);
-  transform: scale(1.12);
+  transform: scale(1.05);
 }
 
 input {

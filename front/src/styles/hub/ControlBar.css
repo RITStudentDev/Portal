@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: space-between;
     width: 98%;
-    margin: 6px auto
+    margin: 6px auto;
 }
 
 .control-bar form {
@@ -31,9 +31,11 @@
 }
 
 .control-bar button {
+    color: #cdd2db;
+    font-size: medium;
     background-color: #0e0f10;
-    padding: 0;
+    padding: 6px 6px 8px;
     height: 28px;
-    width: 28px;
+    width: fit-content;
     margin: 0;
 }
